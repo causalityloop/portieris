@@ -23,4 +23,10 @@ webhooks:
         apiVersions: ["*"]
         resources: ["pods", "deployments", "replicationcontrollers", "replicasets", "daemonsets", "statefulsets", "jobs", "cronjobs"]
     failurePolicy: Fail
+    namespaceSelector:
+      matchExpressions:
+      - key: securityenforcement.admission.cloud.ibm.com/namespace
+        operator: NotIn
+        values:
+        - skip
 {{ end }}
